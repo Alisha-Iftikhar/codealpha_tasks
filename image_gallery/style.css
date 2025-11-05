@@ -1,0 +1,191 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at center, #0a0a0a, #1b1b1b);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* HEADING */
+.title {
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  color: #ffcc00;
+  text-shadow: 0 0 8px #ff4747, 0 0 12px #ffcc00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeInDown 1s ease;
+}
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  animation: fadeInUp 1s ease;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+/* Hover Effects */
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 200, 0, 0.6);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+  opacity: 0.9;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  padding: 10px;
+}
+
+.lightbox.show {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: zoomIn 0.5s ease;
+}
+
+/* NAVIGATION BUTTONS */
+.navigation {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.navigation button {
+  background: linear-gradient(45deg, #ff4747, #ffcc00);
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 200, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.navigation button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 255, 100, 0.8);
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover {
+  color: #ff4747;
+  transform: rotate(90deg);
+}
+
+/* MEDIA QUERIES — RESPONSIVE DESIGN */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .navigation button {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  .lightbox-image {
+    max-width: 95%;
+    max-height: 70%;
+  }
+  .close {
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+  }
+  .navigation button {
+    padding: 8px 10px;
+    font-size: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
